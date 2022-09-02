@@ -1,15 +1,12 @@
 module Mutations
   class CreateVideoGame < BaseMutation
-    argument :title, String, required: true
-    argument :platform, String, required: true
-    argument :genre, String, required: true
-    argument :rating, String, required: false
+    argument :attributes, Types::VideoGameAttributes, required: true
 
-    field :video_game, Types::VideoGameType, null:false
-    field :errors, [String], null:false
+    field :video_game, Types::VideoGameType, null: false
+    field :errors, [String], null: false
 
-    def resolve(title:, platform:, genre:, rating:)
-      video_game = VideoGame.new(title: title, platform: platform, genre: genre, rating: rating)
+    def resolve(attributes:)
+      video_game = VideoGame.new(attributes.to_h)
       if(video_game.save)
         {
         video_game: video_game,
@@ -17,7 +14,6 @@ module Mutations
         }
       else
         {
-        user: nil,
         errors: video_game.errors.full_messages
         }
       end

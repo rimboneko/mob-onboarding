@@ -50,3 +50,5 @@ end
 
 gem "graphql", "~> 2.0"
 gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
