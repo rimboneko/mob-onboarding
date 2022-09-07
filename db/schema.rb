@@ -23,4 +23,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_211615) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "libraries", "users"
+  add_foreign_key "libraries", "video_games"
 end
