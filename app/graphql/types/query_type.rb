@@ -15,5 +15,10 @@ module Types
     def video_game(id:)
       VideoGame.find(id)
     end
+
+    field :my_library, [Types::VideoGameType], null: true
+    def my_library
+      context[:current_user].video_games
+    end
   end
 end

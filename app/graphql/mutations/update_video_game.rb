@@ -1,5 +1,13 @@
 module Mutations
   class UpdateVideoGame < BaseMutation
+    def ready?(**args)
+      if !context[:current_user].admin
+        raise GraphQL::ExecutionError, "You are not authorized!"
+      else
+        true
+      end
+    end
+
     field :video_game, Types::VideoGameType, null: true
     field :errors, [String], null: true
 

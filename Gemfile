@@ -52,3 +52,5 @@ gem "graphql", "~> 2.0"
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
+gem 'jwt'
+gem 'bcrypt', '~> 3.1.7'
